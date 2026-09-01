@@ -5,7 +5,7 @@
 Esta é uma avaliação técnica de **qualidade inicial de uma aplicação de IA generativa**. O objetivo é demonstrar se a aplicação é adequada, confiável e segura para seu contexto de uso, considerando os desafios únicos de sistemas que podem produzir respostas plausíveis porém incorretas, variáveis ou não fundamentadas.
 
 **Projeto Avaliado:** AnythingLLM  
-**Repositório Oficial:** [Link do repositório do projeto] (https://github.com/Mintplex-Labs/anything-llm)
+**Repositório Oficial:** [Link do repositório do projeto](https://github.com/Mintplex-Labs/anything-llm)
 
 ---
 
