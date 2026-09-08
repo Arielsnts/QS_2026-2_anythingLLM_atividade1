@@ -24,6 +24,8 @@ Os achados são resultado da execução de casos de teste, análise de variabili
 
 **Evidência:** [Captura de resposta sem fontes](../evidencias/exemplo/exemplo.png)
 
+**Recomendação:** sugestão de melhoria.
+
 ---
 
 ## Achado n: Exemplo de achado
@@ -42,6 +44,12 @@ Os achados são resultado da execução de casos de teste, análise de variabili
 - [Resposta 1 - Código correto](../evidencias/exemplo/exemplo.png)
 - [Resposta 2 - Código com erro](../evidencias/exemplo/exemplo.png)
 - [Resposta 3 - Resultado inconsistente](../evidencias/exemplo/exemplo.png)
+
+**Recomendação:** sugestão de melhoria.
+
+---
+
+Veja [Plano de Melhoria](02-contexto-uso.md) para consolidação dos achados.
 
 ---
 
