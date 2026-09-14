@@ -20,6 +20,10 @@ Os testes são executados com base em critérios de aceitação claros. Para cad
 - **P (Parcial):** O sistema atendeu parcialmente, com desvios menores ou comportamentos não ideais
 - **R (Reprovado):** O sistema não atendeu ao critério de aceitação
 
+Modelos:
+- Gemini 2.5 flash (CT-01 - CT-03)
+- Gemini 2.5 flash-lite (CT-04, CT-05)
+
 ---
 
 ## Caso de Teste 1: Recuperação de Informação com Indicação de Fonte
