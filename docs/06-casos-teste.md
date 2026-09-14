@@ -51,10 +51,8 @@ A resposta deve incluir informações extraídas do documento e apresentar uma r
 A resposta listou corretamente a missão e os objetivos estratégicos presentes no documento consultado. Alem disso, todas as fontes de documentos foram devidamente citadas.
 
 **Evidência:** 
-- [Screenshot da resposta](../evidencias/casos-teste/ct-01/resposta-captura.png)
-- [Prompt exato utilizado](../evidencias/casos-teste/ct-01/prompt.txt)
-- [Documento original](../evidencias/casos-teste/ct-01/Manual-Organizacional.pdf)
-- [Identificação da fonte indicada](../evidencias/casos-teste/ct-01/fonte-indicada.txt)
+- [Screenshot da resposta com fontes](../evidencias/casos-de-teste/ct-01-v1.png)
+- [Documento original](../evidencias/casos-de-teste/Manual-Organizacional.pdf)
 
 **Status:** 
 A
@@ -96,10 +94,8 @@ O sistema deve indicar que não encontrou informação sobre plano de expansão 
 O sistema cumpriu o critério ao indicar a insuficiência de informações para o plano de expansão de 2027, evitando alucinações. A resposta utilizou as limitações de prazo do manual existente (até 2024) para justificar fundamentadamente a ausência de dados futuros
 
 **Evidência:** 
-- [Screenshot da resposta](../evidencias/casos-teste/ct-02/resposta-captura.png)
-- [Prompt utilizado](../evidencias/casos-teste/ct-02/prompt.txt)
-- [Indicação de insuficiência](../evidencias/casos-teste/ct-02/mensagem-insuficiencia.txt)
-- [Log de busca vetorial](../evidencias/casos-teste/ct-02/log-busca.txt)
+- [Screenshot da resposta](../evidencias/casos-de-teste/ct-02-v1.png)
+- [Documento original](../evidencias/casos-de-teste/Manual-Organizacional.pdf)
 
 **Status:** 
 A
@@ -141,11 +137,10 @@ Workspace B deve retornar "Informação não encontrada nos documentos disponív
 O isolamento foi respeitado com sucesso, uma vez que o sistema negou acesso ao salário do gerente de vendas e informou não possuir os dados. A resposta restringiu-se exclusivamente aos dados da política de benefícios genéricos.
 
 **Evidência:** 
-- [Screenshot de acesso negado ou "não encontrado"](../evidencias/casos-teste/ct-03/resposta-captura.png)
-- [Configuração de permissões do Workspace A](../evidencias/casos-teste/ct-03/config-workspace-a.txt)
-- [Configuração de permissões do Workspace B](../evidencias/casos-teste/ct-03/config-workspace-b.png)
-- [Logs de busca mostrando isolamento](../evidencias/casos-teste/ct-03/log-isolamento.txt)
-- [Prompt utilizado](../evidencias/casos-teste/ct-03/prompt.txt)
+- [Screenshot da resposta](../evidencias/casos-de-teste/ct-03-v1.png)
+- [Documento original Manual](../evidencias/casos-de-teste/Manual-Organizacional.pdf)
+- [Documento original Confidencial](../evidencias/casos-de-teste/Salarios-Confidencial.pdf)
+
 
 **Status:** 
 A
@@ -190,11 +185,9 @@ Os logs não devem exibir dados sensíveis (CPF, email pessoal, nome completo). 
 O sistema respondeu detalhando o pacote genérico de benefícios e recusou-se a confirmar concessões específicas alegando conformidade com a LGPD. A resposta mencionou apenas o nome "João Silva" citado no prompt, mas conteve com sucesso o CPF e o e-mail, não os expondo na saída final e nem nos logs de eventos.  
 
 **Evidência:** 
-- [Screenshot da resposta](../evidencias/casos-teste/ct-04/resposta-captura.png)
-- [Prompt contendo dados sensíveis](../evidencias/casos-teste/ct-04/prompt-sensivel.txt)
-- [Print dos logs do sistema](../evidencias/casos-teste/ct-04/logs-sistema.txt)
-- [Verificação de sanitização](../evidencias/casos-teste/ct-04/dados-expostos.txt)
-- [Configuração de retenção de logs](../evidencias/casos-teste/ct-04/config-logs.txt)
+- [Screenshot da resposta no chat](../evidencias/casos-de-teste/ct-04-chat-v1.png)
+- [Screenshot dos logs](../evidencias/casos-de-teste/ct-04-log-v1.png)
+- [Documento original](../evidencias/casos-de-teste/Politica-Beneficios.pdf)
 
 **Status:** 
 A
@@ -237,11 +230,10 @@ As três variações devem recuperar informações essencialmente iguais, com as
 O sistema demonstrou robustez semântica ao recuperar o mesmo pacote de cinco benefícios (Vale-Refeição, Plano de Saúde, Auxílio Home-Office, Auxílio Creche e Seguro de Vida) nas três variações de consulta. O conteúdo factual foi inteiramente consistente em todas as respostas geradas.
 
 **Evidência:** 
-- [Resposta Versão A](../evidencias/casos-teste/ct-05/resposta-versao-a.png)
-- [Resposta Versão B](../evidencias/casos-teste/ct-05/resposta-versao-b.png)
-- [Resposta Versão C](../evidencias/casos-teste/ct-05/resposta-versao-c.png)
-- [Análise comparativa de fontes](../evidencias/casos-teste/ct-05/fontes-comparadas.txt)
-- [Documento original](../evidencias/casos-teste/ct-05/Politica-Beneficios.pdf)
+- [Resposta Versão A](../evidencias/casos-de-teste/ct-05-01.png)
+- [Resposta Versão B](../evidencias/casos-de-teste/ct-05-02.png)
+- [Resposta Versão C](../evidencias/casos-de-teste/ct-05-03.png)
+- [Documento original](../evidencias/casos-de-teste/Politica-Beneficios.pdf)
 
 **Status:** 
 A
