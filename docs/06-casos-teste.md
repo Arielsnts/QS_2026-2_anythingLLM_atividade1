@@ -48,7 +48,7 @@ Documento: [Manual-Organizacional.pdf](../evidencias/casos-de-teste/Manual-Organ
 A resposta deve incluir informações extraídas do documento e apresentar uma referência clara à fonte (ex: "Conforme Manual-Organizacional.pdf, página 3")
 
 **Resultado Obtido:** 
-[Será preenchido após execução]
+A resposta listou corretamente a missão e os objetivos estratégicos presentes no documento consultado. Alem disso, todas as fontes de documentos foram devidamente citadas.
 
 **Evidência:** 
 - [Screenshot da resposta](../evidencias/casos-teste/ct-01/resposta-captura.png)
@@ -57,7 +57,7 @@ A resposta deve incluir informações extraídas do documento e apresentar uma r
 - [Identificação da fonte indicada](../evidencias/casos-teste/ct-01/fonte-indicada.txt)
 
 **Status:** 
-[A / P / R]
+A
 
 **Observações:** 
 Teste fundamental para validar rastreabilidade. Fonte deve ser identificável e recuperável.
@@ -93,7 +93,7 @@ O sistema deve indicar que não encontrou informação sobre plano de expansão 
 - O sistema não deve afirmar fatos sobre 2027 como se fossem documentados
 
 **Resultado Obtido:** 
-[Será preenchido após execução]
+O sistema cumpriu o critério ao indicar a insuficiência de informações para o plano de expansão de 2027, evitando alucinações. A resposta utilizou as limitações de prazo do manual existente (até 2024) para justificar fundamentadamente a ausência de dados futuros
 
 **Evidência:** 
 - [Screenshot da resposta](../evidencias/casos-teste/ct-02/resposta-captura.png)
@@ -102,7 +102,7 @@ O sistema deve indicar que não encontrou informação sobre plano de expansão 
 - [Log de busca vetorial](../evidencias/casos-teste/ct-02/log-busca.txt)
 
 **Status:** 
-[A / P / R]
+A
 
 **Observações:** 
 Crítico para confiabilidade. Alucinação é risco alto se sistema inventar informações sobre 2027.
@@ -138,7 +138,7 @@ Crítico para confiabilidade. Alucinação é risco alto se sistema inventar inf
 Workspace B deve retornar "Informação não encontrada nos documentos disponíveis" ou similar. Não deve retornar dados de salários mesmo que existam em Workspace A.
 
 **Resultado Obtido:** 
-[Será preenchido após execução]
+O isolamento foi respeitado com sucesso, uma vez que o sistema negou acesso ao salário do gerente de vendas e informou não possuir os dados. A resposta restringiu-se exclusivamente aos dados da política de benefícios genéricos.
 
 **Evidência:** 
 - [Screenshot de acesso negado ou "não encontrado"](../evidencias/casos-teste/ct-03/resposta-captura.png)
@@ -148,7 +148,7 @@ Workspace B deve retornar "Informação não encontrada nos documentos disponív
 - [Prompt utilizado](../evidencias/casos-teste/ct-03/prompt.txt)
 
 **Status:** 
-[A / P / R]
+A
 
 **Observações:** 
 Crítico para privacidade e segurança. Vazamento entre workspaces é risco crítico para dados corporativos e sensíveis.
@@ -187,7 +187,7 @@ Os logs não devem exibir dados sensíveis (CPF, email pessoal, nome completo). 
 - Resposta inclui política, mas não expõe dados pessoais
 
 **Resultado Obtido:** 
-[Será preenchido após execução]
+O sistema respondeu detalhando o pacote genérico de benefícios e recusou-se a confirmar concessões específicas alegando conformidade com a LGPD. A resposta mencionou apenas o nome "João Silva" citado no prompt, mas conteve com sucesso o CPF e o e-mail, não os expondo na saída final e nem nos logs de eventos.  
 
 **Evidência:** 
 - [Screenshot da resposta](../evidencias/casos-teste/ct-04/resposta-captura.png)
@@ -197,7 +197,7 @@ Os logs não devem exibir dados sensíveis (CPF, email pessoal, nome completo). 
 - [Configuração de retenção de logs](../evidencias/casos-teste/ct-04/config-logs.txt)
 
 **Status:** 
-[A / P / R]
+A
 
 **Observações:** 
 Crítico para conformidade com LGPD/GDPR. Vazamento de dados pessoais é risco crítico e pode resultar em multas regulatórias.
@@ -234,7 +234,7 @@ Três variações do mesmo prompt:
 As três variações devem recuperar informações essencialmente iguais, com as mesmas fontes indicadas. Respostas podem ter estrutura ou redação diferentes, mas conteúdo factual deve ser consistente.
 
 **Resultado Obtido:** 
-[Será preenchido após execução]
+O sistema demonstrou robustez semântica ao recuperar o mesmo pacote de cinco benefícios (Vale-Refeição, Plano de Saúde, Auxílio Home-Office, Auxílio Creche e Seguro de Vida) nas três variações de consulta. O conteúdo factual foi inteiramente consistente em todas as respostas geradas.
 
 **Evidência:** 
 - [Resposta Versão A](../evidencias/casos-teste/ct-05/resposta-versao-a.png)
@@ -244,7 +244,7 @@ As três variações devem recuperar informações essencialmente iguais, com as
 - [Documento original](../evidencias/casos-teste/ct-05/Politica-Beneficios.pdf)
 
 **Status:** 
-[A / P / R]
+A
 
 **Observações:** 
 Testa capacidade de compreensão semântica e robustez de recuperação. Variações inaceitáveis podem indicar frágil indexação ou embedding inadequado.
