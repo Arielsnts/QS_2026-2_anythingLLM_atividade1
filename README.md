@@ -30,7 +30,6 @@ Esta é uma avaliação técnica de **qualidade inicial de uma aplicação de IA
 1. **Clone este repositório**
 ```bash
    git clone https://github.com/Arielsnts/QS_2026-2_anythingLLM_atividade1
-   cd projeto-qualidade-ia
 ```
 
 2. **Consulte a documentação técnica**
@@ -69,21 +68,19 @@ Navegue pelas seções principais:
 
 ## Evidências
 
-As evidências estão organizadas em:
-
-- links 
+- Para acessar as evidências: [clique aqui](evidencias/)
 
 ---
 
 ## Relatório Final
 
-- **[Relatório Técnico (PDF)]** - Versão compilada
+- Para acessar o relatório técnico (pdf): [clique aqui]
 
 ---
 
 ## Referências
 
-- Para acessar as refêrencias: [clique aqui](info/referencias.md)
+- Para acessar as referências: [clique aqui](info/referencias.md)
 
 ---
 

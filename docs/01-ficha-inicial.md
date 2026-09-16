@@ -80,27 +80,6 @@ Exclui:
 - Benchmarks contra concorrentes
 - Deploy em produção em nuvem pública
 
-## Riscos Iniciais
-
-- **Alucinação:** LLM pode gerar informações não presentes nos documentos indexados, mesmo com RAG
-- **Vazamento de Dados:** Documentos sensíveis podem ser expostos em logs, histórico ou transmitidos sem proteção
-- **Rastreabilidade Incompleta:** Respostas podem não indicar claramente qual documento foi consultado
-- **Viés em Indexação:** Embeddings podem não capturar contexto corretamente em idiomas não-inglês
-- **Confiabilidade de Busca:** Documentos relevantes podem não ser recuperados (falso negativo)
-- **Variabilidade:** Mesma consulta pode produzir respostas diferentes conforme parâmetros do LLM
-- **Autenticação:** Falta de controle granular sobre quem acessa quais documentos
-- **Perda de Contexto:** Documentos muito longos podem ser truncados ou mal processados
-
-## Limitações Conhecidas (conforme GitHub)
-
-- Suporte limitado para idiomas não-inglês
-- Tamanho máximo de documento: [Verificar documentação]
-- Requer GPU ou servidor com recursos significativos para embeddings locais
-- Sem controle fino de acesso por usuário (permissões globais)
-- Dependências externas: Requer LLM provider ou instalação local de modelo
-- Sem criptografia de documentos em repouso
-- Histórico de conversa não é excluído automaticamente
-
 ---
 
 [Clique aqui para voltar ao início](/README.md)

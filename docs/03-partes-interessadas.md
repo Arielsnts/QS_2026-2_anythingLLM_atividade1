@@ -79,3 +79,7 @@ A identificação das partes interessadas demonstra que a qualidade do AnythingL
 Também devem ser considerados aspectos relacionados à qualidade dos documentos utilizados, gerenciamento de permissões, privacidade, segurança, manutenção do software e uso responsável das informações.
 
 Os stakeholders identificados servirão como referência para a definição dos requisitos de qualidade e dos casos de teste utilizados nas próximas etapas da avaliação.
+
+---
+
+[Clique aqui para voltar ao início](/README.md)

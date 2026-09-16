@@ -39,4 +39,6 @@ Os 10 requisitos apresentados estabelecem critérios de qualidade abrangentes pa
 
 A verificação desses requisitos será realizada por meio de casos de teste e evidências coletadas durante a avaliação da aplicação.
 
+---
+
 [Clique aqui para voltar ao início](/README.md) 

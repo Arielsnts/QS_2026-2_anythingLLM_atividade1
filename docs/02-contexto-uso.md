@@ -65,3 +65,7 @@ De modo geral, os riscos identificados são tratados de forma distribuída no re
 O AnythingLLM apresenta diferentes possibilidades de uso para consulta e interpretação de informações por meio de documentos, modelos de linguagem e agentes de IA. Entretanto, seu uso envolve limitações e riscos relacionados principalmente à precisão das respostas, aos dados utilizados, à privacidade e à dependência de serviços externos.
 
 Por esse motivo, a utilização do sistema deve considerar suas limitações e manter a supervisão humana, especialmente quando as informações geradas forem utilizadas para apoiar decisões relevantes.
+
+---
+
+[Clique aqui para voltar ao início](/README.md)
