@@ -61,8 +61,7 @@ Navegue pelas seções principais:
 - **[Casos de Teste](docs/06-casos-teste.md)** 
 - **[Variabilidade e Não Determinismo](docs/07-variabilidade.md)** 
 - **[Achados](docs/08-achados.md)** 
-- **[Plano de Melhoria](docs/09-plano-melhoria.md)** 
-- **[Limitações](docs/10-limitacoes.md)** 
+- **[Plano de Melhoria](docs/09-plano-melhoria.md)**  
 
 ---
 

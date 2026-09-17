@@ -80,6 +80,10 @@ Exclui:
 - Benchmarks contra concorrentes
 - Deploy em produção em nuvem pública
 
+## Limitações
+
+Esta avaliação possui limitações inerentes à sua metodologia e escopo. A análise foi conduzida em um ambiente controlado, utilizando um conjunto restrito de documentos corporativos e cenários de teste focados primariamente nas mecânicas de RAG, controle de permissões e privacidade. Além disso, os resultados documentados representam um retrato temporal, estando estritamente condicionados à versão da ferramenta testada (AnythingLLM) e às versões dos modelos de linguagem utilizados no momento da execução (família Gemini). Consequentemente, o comportamento da aplicação pode apresentar variações quando submetida a ambientes de produção em larga escala, com bases documentais massivas, alta concorrência de usuários simultâneos ou após atualizações nas APIs dos provedores de IA subjacentes.
+
 ---
 
 [Clique aqui para voltar ao início](/README.md)
