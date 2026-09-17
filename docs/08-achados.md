@@ -30,25 +30,6 @@ Os achados são resultado da execução de casos de teste, análise de variabili
 
 ---
 
-## Achado n: Exemplo de achado
-
-**Nível de Severidade:** Muito Alta
-
-**Descrição:** Execuções idênticas do mesmo prompt produzem respostas semanticamente diferentes. Em um caso, a aplicação retornou código correto; em outro, código com erro lógico. Não há indicação de quando a resposta é derivada de alucinação.
-
-**Impacto:** Impede confiança em respostas técnicas. Usuários não conseguem determinar se a resposta é confiável ou se foi gerada sem fundamentação real.
-
-**Categoria Relacionada:** Confiabilidade, Variabilidade, Não Determinismo
-
-**Evidências:**
-- [Resposta 1 - Código correto](../evidencias/exemplo/exemplo.png)
-- [Resposta 2 - Código com erro](../evidencias/exemplo/exemplo.png)
-- [Resposta 3 - Resultado inconsistente](../evidencias/exemplo/exemplo.png)
-
-**Recomendação:** sugestão de melhoria.
-
----
-
 ## Achado 2: Atribuição Indevida de Fonte em Perguntas Fora de Domínio (Alucinação de Citação)
 
 **Nível de Severidade:** Crítica
@@ -87,24 +68,26 @@ Os achados são resultado da execução de casos de teste, análise de variabili
 
 ---
 
-## Achado 4: Aumento de Custo Computacional e Latência em Entradas Longas
+## Achado 4: Degradação Severa de Desempenho, Alta Latência e Rápida Exaustão de Cota da API
 
-**Nível de Severidade:** Baixa
+**Nível de Severidade:** Alta
 
-**Descrição:** Durante a execução do caso de teste CT-08 na formulação longa e composta (envolvendo múltiplas sub-perguntas detalhadas sobre o auxílio home office), o sistema exigiu uma saída extensa dividida em 3 capturas (`ct-08-01-longa`, `ct-08-02-longa` e `ct-08-03-longa`). Embora o conteúdo retornado estivesse correto e completo, observou-se tempo de resposta sensivelmente maior e consumo elevado de tokens de entrada e saída.
+**Descrição:** Durante as sessões de avaliação prática do AnythingLLM, a plataforma demonstrou degradação severa de desempenho operacional, apresentando instabilidade e latências extremas que chegaram a até 5 minutos de espera para o retorno de uma única resposta. Para viabilizar a execução fluida dos testes, foi indispensável configurar uma chave de API externa proprietária. Contudo, observou-se uma taxa de consumo de tokens excessivamente acelerada pela aplicação, o que provocou a exaustão prematura da cota do modelo principal (`gemini-2.5-flash`) e forçou uma troca emergencial e não planejada para um modelo mais compacto (`gemini-2.5-flash-lite`) entre os testes CT-03 e CT-04.
 
-**Impacto:** Impacta a eficiência de desempenho e a experiência do usuário devido ao aumento na latência de geração. Em cenários de produção com múltiplos usuários concorrentes, respostas demasiadamente prolixas aumentam o custo computacional da API e a probabilidade de saturação da janela de contexto.
+**Impacto:** Compromete criticamente a eficiência de desempenho, a confiabilidade operacional e a viabilidade econômica da solução. Tempos de espera na ordem de minutos inviabilizam o uso interativo em ambiente corporativo. Além disso, a rápida exaustão de limites de requisição por minuto (RPM/TPM) impõe a degradação forçada do modelo de linguagem (fallback), o que altera a capacidade de raciocínio da ferramenta em tempo de execução e introduz variabilidade nos resultados de segurança e conformidade (como verificado no CT-04).
 
-**Categoria Relacionada:** Eficiência de Desempenho, Usabilidade
+**Categoria Relacionada:** Eficiência de Desempenho, Capacidade, Confiabilidade, Usabilidade
 
-**Evidência:**
-- [Screenshot da resposta longa - Parte 1](../evidencias/casos-de-teste/ct-08-01-longa.png)
-- [Screenshot da resposta longa - Parte 2](../evidencias/casos-de-teste/ct-08-02-longa.png)
-- [Screenshot da resposta longa - Parte 3](../evidencias/casos-de-teste/ct-08-03-longa.png)
-- [Documento original](../evidencias/casos-de-teste/Politica-Beneficios.pdf)
-- [Caso de Teste 8 - Robustez a Variações de Extensão da Entrada](06-casos-teste.md#caso-de-teste-8-robustez-a-variações-de-extensão-da-entrada-curta-vs-longa)
+**Evidências:**
+- [Relatório Metodológico - Transição Emergencial de Modelos](06-casos-teste.md#metodologia)
+- [Análise de Variabilidade - Transição de Modelo e Latência](07-variabilidade.md)
+- [Screenshots de Execução com Flash-Lite](../evidencias/casos-de-teste/ct-04-chat-v1.png)
+- [Documento de Casos de Teste - CT-04 a CT-12](06-casos-teste.md#caso-de-teste-4-exposição-de-dados-sensíveis-em-logs)
 
-**Recomendação:** Avaliar a implementação de técnicas de decomposição de consultas (*Query Decomposition*) ou definir limites de concisão e sumarização no prompt do sistema, orientando o agente a estruturar saídas diretas em tópicos executivos quando exposto a entradas densas.
+**Recomendação:** Implementar mecanismos de governança de chamadas no AnythingLLM, incluindo:
+1. Configuração de limites estritos de contexto (redução da quantidade de chunks recuperados e truncamento de histórico ocioso de chat) para diminuir o volume de tokens injetados por requisição;
+2. Arquitetura formal de contingência com pooling/balanceamento de chaves ou contratação de plano com throughput provisionado (Tier pago/escalável);
+3. Otimização das rotinas de busca vetorial local para evitar gargalos de processamento que represam as chamadas antes do envio à API.
 
 ---
 
