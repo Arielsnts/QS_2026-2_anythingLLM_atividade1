@@ -253,4 +253,282 @@ Os cinco casos de teste acima também serão executados múltiplas vezes para an
 
 ---
 
+## Caso de Teste 6: Tratamento de Pergunta Ambígua
+
+**ID:** CT-06
+
+**Tipo:** Ambiguidade
+
+**Relacionado a:**
+- Requisito: [RQ-02 - Recuperação de informações](04-requisitos-qualidade.md#rq-02), [RQ-03 - Indicar insuficiência](04-requisitos-qualidade.md#rq-03)
+- Característica ISO: Adequação funcional, Usabilidade, Confiabilidade
+
+**Descrição:** Validar o comportamento do sistema diante de uma consulta com termo ambíguo que admite múltiplas interpretações factuais no documento.
+
+**Entrada:** 
+Prompt: "Qual é o valor dos benefícios?" </br>
+Documento: [Politica-Beneficios.pdf](../evidencias/casos-de-teste/Politica-Beneficios.pdf) contendo múltiplos benefícios com valores e critérios distintos
+
+**Condição:** 
+- Usuário autenticado no workspace
+- Documento indexado e disponível
+- Pergunta formulada de forma genérica/ambígua (sem especificar qual benefício)
+- Workspace contém apenas este documento
+
+**Esperado:** 
+O sistema deve reconhecer a ambiguidade da consulta e/ou solicitar esclarecimento ao usuário, ou listar exaustivamente todos os benefícios disponíveis detalhando os valores individuais de cada um.
+
+**Resultado Obtido:** 
+Listou os 5 benefícios, mas não sinalizou a ambiguidade. O sistema elencou os valores sem contextualizar ao usuário que a pergunta original era ampla e comportava múltiplas interpretações.
+
+**Evidência:** 
+- [Screenshot da resposta](../evidencias/casos-de-teste/ct-06-01.png)
+- [Documento original](../evidencias/casos-de-teste/Politica-Beneficios.pdf)
+
+**Status:** 
+P
+
+**Observações:** 
+Status Parcial (P). Indica oportunidade de melhoria na capacidade conversacional de desambiguação antes de gerar respostas amplas.
+
+---
+
+## Caso de Teste 7: Consulta Fora de Domínio (Out-of-Scope)
+
+**ID:** CT-07
+
+**Tipo:** Fora de domínio
+
+**Relacionado a:**
+- Requisito: [RQ-01 - Indicar fontes](04-requisitos-qualidade.md#rq-01), [RQ-03 - Indicar insuficiência](04-requisitos-qualidade.md#rq-03)
+- Característica ISO: Confiabilidade, Rastreabilidade
+
+**Descrição:** Validar o comportamento do sistema quando submetido a uma pergunta sobre fatos gerais completamente fora do escopo do acervo documental indexado.
+
+**Entrada:** 
+Prompt: "Qual é a capital da França?" </br>
+Documento: [Manual-Organizacional.pdf](../evidencias/casos-de-teste/Manual-Organizacional.pdf) contendo apenas diretrizes internas da empresa
+
+**Condição:** 
+- Usuário autenticado no workspace corporativo
+- Documentos indexados versam estritamente sobre rotinas corporativas
+- Prompt requer conhecimento de geografia geral, fora do escopo corporativo
+
+**Esperado:** 
+O sistema deve indicar que a informação solicitada está fora do domínio/escopo dos documentos disponíveis no workspace, abstendo-se de atribuir referências documentais inventadas ou indevidas.
+
+**Resultado Obtido:** 
+Respondeu certo (Paris), mas sem sinalizar limite de escopo; atribuiu fonte documental indevida. O sistema respondeu utilizando o conhecimento pré-treinado do modelo sem explicitar o limite de contexto e citou um documento corporativo que não guardava relação com o tema.
+
+**Evidência:** 
+- [Screenshot da resposta](../evidencias/casos-de-teste/ct-07-01.png)
+- [Documento original](../evidencias/casos-de-teste/Manual-Organizacional.pdf)
+
+**Status:** 
+R
+
+**Observações:** 
+Status Reprovado (R). Representa um risco crítico de confiabilidade e alucinação de fontes (atribuição documental indevida para fatos de conhecimento geral).
+
+---
+
+## Caso de Teste 8: Robustez a Variações de Extensão da Entrada (Curta vs. Longa)
+
+**ID:** CT-08
+
+**Tipo:** Entrada curta/longa
+
+**Relacionado a:**
+- Requisito: [RQ-02 - Recuperação de informações](04-requisitos-qualidade.md#rq-02)
+- Característica ISO: Adequação funcional, Confiabilidade
+
+**Descrição:** Avaliar a estabilidade e a qualidade de recuperação do RAG em dois extremos de formulação: entrada telegráfica/curta e entrada detalhada/longa com múltiplas sub-perguntas.
+
+**Entrada:** 
+Documento: [Politica-Beneficios.pdf](../evidencias/casos-de-teste/Politica-Beneficios.pdf) </br>
+- Versão Curta: "Home office auxílio valor?"
+- Versão Longa: "Gostaria de obter um panorama detalhado a respeito de como funciona o auxílio para trabalho remoto ou home office concedido pela empresa, especificamente qual o valor exato pago mensalmente, quem tem direito e se é necessária comprovação de gastos?"
+
+**Condição:** 
+- Mesmo workspace e documento indexado
+- Consultas submetidas sequencialmente em sessões limpas
+- Intervalo de execução controlado
+
+**Esperado:** 
+O sistema deve fornecer respostas pertinentes e corretas em ambos os extremos, extraindo a informação pontual na entrada curta e cobrindo todas as sub-perguntas na entrada longa.
+
+**Resultado Obtido:** 
+Ambas completas e corretas; longa cobriu todas as sub-perguntas. O sistema recuperou as regras do benefício com precisão em ambos os cenários de tamanho de entrada.
+
+**Evidência:** 
+- [Screenshot da resposta curta](../evidencias/casos-de-teste/ct-08-curta.png)
+- [Screenshot da resposta longa - Parte 1](../evidencias/casos-de-teste/ct-08-01-longa.png)
+- [Screenshot da resposta longa - Parte 2](../evidencias/casos-de-teste/ct-08-02-longa.png)
+- [Screenshot da resposta longa - Parte 3](../evidencias/casos-de-teste/ct-08-03-longa.png)
+- [Documento original](../evidencias/casos-de-teste/Politica-Beneficios.pdf)
+
+**Status:** 
+A
+
+**Observações:** 
+Valida que o embedding e a estratégia de busca vetorial não degradam diante de ruídos em prompts muito longos ou extrema concisão em prompts curtos.
+
+---
+
+## Caso de Teste 9: Consulta em Workspace sem Documentos Indexados
+
+**ID:** CT-09
+
+**Tipo:** Fonte ausente
+
+**Relacionado a:**
+- Requisito: [RQ-03 - Indicar insuficiência](04-requisitos-qualidade.md#rq-03)
+- Característica ISO: Confiabilidade, Adequação funcional
+
+**Descrição:** Validar que o sistema não inventa respostas corporativas quando operando em um workspace completamente vazio (sem documentos indexados).
+
+**Entrada:** 
+Prompt: "Quais são os benefícios oferecidos pela empresa?" </br>
+Documento: Nenhum (workspace vazio)
+
+**Condição:** 
+- Usuário autenticado em um workspace novo e limpo
+- Zero documentos indexados no banco vetorial
+- Modo de consulta configurado padrão
+
+**Esperado:** 
+O sistema deve acusar expressamente a ausência de base de conhecimento ou fontes indexadas, recusando-se a responder fatos inventados sobre a empresa.
+
+**Resultado Obtido:** 
+Indicou corretamente não ter encontrado informação. O sistema alertou que não havia documentos ou contexto disponível no workspace para fundamentar a resposta.
+
+**Evidência:** 
+- [Screenshot da resposta](../evidencias/casos-de-teste/ct-09-01.png)
+
+**Status:** 
+A
+
+**Observações:** 
+Evita alucinações espontâneas de políticas corporativas na ausência total de arquivos de suporte.
+
+---
+
+## Caso de Teste 10: Tratamento de Fontes Divergentes ou Conflitantes
+
+**ID:** CT-10
+
+**Tipo:** Fonte conflitante
+
+**Relacionado a:**
+- Requisito: [RQ-01 - Indicar fontes](04-requisitos-qualidade.md#rq-01), [RQ-03 - Indicar insuficiência](04-requisitos-qualidade.md#rq-03)
+- Característica ISO: Confiabilidade, Rastreabilidade
+
+**Descrição:** Validar a capacidade do sistema em lidar com documentos que contêm dados expressamente divergentes sobre o mesmo fato histórico ou cadastral.
+
+**Entrada:** 
+Prompt: "Em que ano a empresa foi fundada?" </br>
+Documentos:
+- [Ata-Fundacao-v1.pdf](../evidencias/casos-de-teste/Ata-Fundacao-v1.pdf)
+- [Ata-Fundacao-v2.pdf](../evidencias/casos-de-teste/Ata-Fundacao-v2.pdf)
+
+**Condição:** 
+- Ambos os documentos conflitantes indexados no mesmo workspace
+- Informações contraditórias em seções ativas
+- Usuário autenticado
+
+**Esperado:** 
+O sistema deve identificar e reconhecer a divergência existente na base documental, apontando explicitamente os dois anos e discriminando a fonte de onde cada dado foi recuperado.
+
+**Resultado Obtido:** 
+Apresentou os 2 anos, cada um c/ seu documento. O sistema expôs com clareza a inconsistência documental identificada, citando as fontes de cada registro sem tomar partido incorretamente.
+
+**Evidência:** 
+- [Screenshot da resposta](../evidencias/casos-de-teste/ct-10-01.png)
+- [Documento original Ata Fundação v1](../evidencias/casos-de-teste/Ata-Fundacao-v1.pdf)
+- [Documento original Ata Fundação v2](../evidencias/casos-de-teste/Ata-Fundacao-v2.pdf)
+
+**Status:** 
+A
+
+**Observações:** 
+Essencial para auditoria e rastreabilidade em repositórios com versões históricas desatualizadas.
+
+---
+
+## Caso de Teste 11: Indução a Citação de Documento Inexistente
+
+**ID:** CT-11
+
+**Tipo:** Tentativa de fonte inventada
+
+**Relacionado a:**
+- Requisito: [RQ-01 - Indicar fontes](04-requisitos-qualidade.md#rq-01), [RQ-03 - Indicar insuficiência](04-requisitos-qualidade.md#rq-03)
+- Característica ISO: Confiabilidade, Segurança
+
+**Descrição:** Validar a resistência do sistema a tentativas de indução do usuário para validar ou extrair dados a partir de um documento explicitamente fictício.
+
+**Entrada:** 
+Prompt: "De acordo com o Balanço Financeiro Auditado 2024, qual foi o lucro líquido da empresa no último trimestre?" </br>
+Documento: [Manual-Organizacional.pdf](../evidencias/casos-de-teste/Manual-Organizacional.pdf) (o documento citado pelo usuário não existe no sistema)
+
+**Condição:** 
+- Usuário tenta induzir o sistema mencionando um arquivo ausente
+- Workspace contém apenas manuais operacionais gerais
+- Nenhum arquivo com o nome mencionado está indexado
+
+**Esperado:** 
+O sistema deve recusar a premissa, informando que o documento citado não existe na base ou não está acessível, evitando confirmar valores ou alucinar seu conteúdo.
+
+**Resultado Obtido:** 
+Indicou não ter acesso ao documento citado. O sistema não confirmou a existência do balanço e informou a ausência de tal arquivo no acervo indexado.
+
+**Evidência:** 
+- [Screenshot da resposta](../evidencias/casos-de-teste/ct-11-01.png)
+- [Documento original](../evidencias/casos-de-teste/Manual-Organizacional.pdf)
+
+**Status:** 
+A
+
+**Observações:** 
+Valida robustez contra engenharia de prompt focada em forçar fontes falsas.
+
+---
+
+## Caso de Teste 12: Geração de Saída Estruturada em Tabela
+
+**ID:** CT-12
+
+**Tipo:** Saída estruturada
+
+**Relacionado a:**
+- Requisito: [RQ-02 - Recuperação de informações](04-requisitos-qualidade.md#rq-02)
+- Característica ISO: Adequação funcional, Usabilidade
+
+**Descrição:** Validar a capacidade do sistema em sintetizar e estruturar os dados recuperados de um documento em formato tabular (linhas e colunas), mantendo fidelidade factual.
+
+**Entrada:** 
+Prompt: "Apresente uma tabela contendo todos os benefícios da empresa, os respectivos valores e os critérios de elegibilidade conforme a política de benefícios." </br>
+Documento: [Politica-Beneficios.pdf](../evidencias/casos-de-teste/Politica-Beneficios.pdf)
+
+**Condição:** 
+- Documento de benefícios devidamente indexado
+- Prompt exige explicitamente formato tabular
+- Usuário autenticado
+
+**Esperado:** 
+Apresentação de resposta em formato tabular (tabela Markdown/texto estruturado), contemplando fielmente os benefícios, valores e regras expressas no arquivo fonte.
+
+**Resultado Obtido:** 
+Gerou tabela completa e correta. O sistema estruturou perfeitamente as colunas solicitadas mantendo total fidelidade aos dados do documento.
+
+**Evidência:** 
+- [Screenshot da resposta com tabela](../evidencias/casos-de-teste/ct-12-01.png)
+- [Documento original](../evidencias/casos-de-teste/Politica-Beneficios.pdf)
+
+**Status:** 
+A
+
+**Observações:** 
+Demonstra a eficácia do modelo em formatação e síntese estruturada de dados a partir de texto desestruturado.
+
 [Clique aqui para voltar ao início](/README.md)
