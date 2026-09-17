@@ -11,7 +11,7 @@ Esta é uma avaliação técnica de **qualidade inicial de uma aplicação de IA
 
 ## Vídeo da Atividade
 
-**URL:** [Link do vídeo publicado]  
+**URL:** [Link do vídeo publicado](https://drive.google.com/file/d/1PPce-hOlxhvBh_oVI25f30ACcWk2DIw2/view?usp=sharing)
 **Mais informações:** [clique aqui](video/video.md)
 
 ---
@@ -73,7 +73,7 @@ Navegue pelas seções principais:
 
 ## Relatório Final
 
-- Para acessar o relatório técnico (pdf): [clique aqui]
+- Para acessar o relatório técnico (pdf): [clique aqui](relatorio/A1_AnythingLLM_KarolSthefanny.pdf)
 
 ---
 
