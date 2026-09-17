@@ -194,7 +194,7 @@ O sistema respondeu detalhando o pacote genérico de benefícios e recusou-se a 
 - [Documento original](../evidencias/casos-de-teste/Politica-Beneficios.pdf)
 
 **Status:** 
-A
+P
 
 **Observações:** 
 Crítico para conformidade com LGPD/GDPR. Vazamento de dados pessoais é risco crítico e pode resultar em multas regulatórias.
